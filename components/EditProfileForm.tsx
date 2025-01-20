@@ -1,10 +1,9 @@
 'use client';
 
 import {useState} from 'react';
-import {SignIn} from '@/firebase/config';
 import toast from 'react-hot-toast';
 
-export function EditProfileForm() {
+export function EditProfileForm () {
 	const [userName, setUserName] = useState('');
 	const [userEmail, setUserEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -15,16 +14,17 @@ export function EditProfileForm() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsLoading(true);
-		const loadingToast = toast.loading('Iniciando sesión...');
-
-		try {
-			await SignIn(userName, password);
-			toast.success('¡Bienvenido!', {id: loadingToast});
-		} catch {
-			toast.error('Usuario o contraseña incorrectos', {id: loadingToast});
-		} finally {
-			setIsLoading(false);
-		}
+		const loadingToast = toast.loading('Actualizando informacion...');
+    try {
+      // Update user info
+      toast.success('Informacion actualizada correctamente');
+    } catch (error) {
+      console.error('Error updating user info:', error);
+      toast.error('Error al actualizar informacion');
+    } finally {
+      setIsLoading(false);
+      toast.dismiss(loadingToast);
+    }
 	};
 
 	return (

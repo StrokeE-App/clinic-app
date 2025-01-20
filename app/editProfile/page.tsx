@@ -2,7 +2,7 @@
 
 import {useEffect,useState} from 'react';
 import {StrokeeLogo} from '@/components/StrokeeLogo';
-import { EditProfileForm } from '@/components/editProfileForm';
+import { EditProfileForm } from '@/components/EditProfileForm';
 
 export default function EditProfile() {
   const [isLoading, setIsLoading] = useState(true);

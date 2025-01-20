@@ -3,6 +3,7 @@
 import {Settings, X} from 'lucide-react';
 import {useState, useEffect} from 'react';
 import {SignOut} from '@/firebase/config';
+import Link from 'next/link';
 
 export default function SettingsMenu() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +54,7 @@ export default function SettingsMenu() {
         
         {/* Panel Body */}
         <div className="p-6">
-          <p className="text-lg font-medium">Editar perfil</p>
+          <Link href='/editProfile' className="text-lg font-medium">Editar perfil</Link>
         </div>
 				{/* Panel Footer with Logout Button */}
 				<div className="absolute bottom-0 left-0 right-0 p-6">
