@@ -9,4 +9,5 @@ export type EmergencyInfo = {
   emergencyTime: Date;
   strokeLevel?: string;
   emergencyLocation: {latitude: double; longitude: double};
+  emergencyMedications: string[];
 };

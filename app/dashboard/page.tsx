@@ -9,7 +9,7 @@ import SettingsMenu from '@/components/SettingsMenu';
 
 export default function Dashboard() {
 	return (
-		<main className="min-h-screen bg-white p-4">
+		<main className="min-h-screen p-4">
 			{/* Header */}
 			<SettingsMenu />
 
