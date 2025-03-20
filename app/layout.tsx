@@ -1,35 +1,40 @@
-import type {Metadata} from 'next';
-import {Geist, Geist_Mono} from 'next/font/google';
-import './globals.css';
-import {AuthProvider} from '@/context/AuthContext';
-import {Toaster} from 'react-hot-toast';
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "react-hot-toast";
+import { SseProvider } from "@/context/SseContext";
 
 const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-	title: 'StrokeE - Clinic App',
-	description: 'Emergency response system for Clinic',
+  title: "StrokeE - Clinic App",
+  description: "Emergency response system for Clinic",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="es">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-customWhite`}>
-				<AuthProvider>{children}</AuthProvider>
-				<Toaster position="top-center" />
-			</body>
-		</html>
-	);
+  return (
+    <html lang="es">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-customWhite`}
+      >
+        <SseProvider>
+          <AuthProvider>{children}</AuthProvider>
+          <Toaster position="top-center" />
+        </SseProvider>
+      </body>
+    </html>
+  );
 }
