@@ -63,7 +63,7 @@ export default function Dashboard() {
           <EmergencyCard
             key={emergency.emergencyId}
             userName={`${emergency.patient.firstName} ${emergency.patient.lastName}`}
-            userPhone={emergency.userPhone}
+            userPhone={emergency.patient.phoneNumber}
             emergencyId={emergency.emergencyId}
             emergency={emergency}
           />

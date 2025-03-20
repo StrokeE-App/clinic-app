@@ -47,13 +47,16 @@ export default function SettingsMenu() {
 			>
 				{/* Panel Header */}
 				<div className="relative bg-customRed text-white p-6">
-					<h2 className="text-2xl font-medium">Hola,</h2>
-					<p className="text-2xl font-black">Clinica!</p>
+          <Link href='/dashboard'>
+					  <h2 className="text-2xl font-medium">Hola,</h2>
+					  <p className="text-2xl font-black">Clinica!</p>
+          </Link>
 					<X onClick={() => setIsOpen(false)} className="absolute top-6 right-6 w-6 h-6 cursor-pointer" />
 				</div>
         
         {/* Panel Body */}
-        <div className="p-6">
+        <div className="p-6 flex flex-col gap-4">
+          <Link href='/invitePatient' className="text-lg font-medium">Invitar paciente</Link>
           <Link href='/editProfile' className="text-lg font-medium">Editar perfil</Link>
         </div>
 				{/* Panel Footer with Logout Button */}

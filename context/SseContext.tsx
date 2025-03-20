@@ -14,7 +14,7 @@ const SseContext = createContext<SseContextType | undefined>(undefined);
 
 export function SseProvider({children}: {children: ReactNode}) {
 	const {data, isConnected, error} = useSseEvents<EmergencyInfo[]>({
-		url: `${process.env.NEXT_PUBLIC_NOTIFICATION_BACKEND_URL}/operator-notification/emergencies-patients`,
+		url: `${process.env.NEXT_PUBLIC_NOTIFICATION_BACKEND_URL}/clinic-notification/emergencies`,
 	});
 
 	return <SseContext.Provider value={{emergencies: data, isConnected, error}}>{children}</SseContext.Provider>;
