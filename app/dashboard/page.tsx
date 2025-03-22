@@ -1,27 +1,74 @@
-'use client';
+"use client";
 
 // Mocks
-import {emergenciesList} from '@/mocks/emergency';
+import { emergenciesList } from "@/mocks/emergency";
 
 // Components
-import EmergencyCard from '@/components/EmergencyCard';
-import SettingsMenu from '@/components/SettingsMenu';
+import EmergencyCard from "@/components/EmergencyCard";
+import SettingsMenu from "@/components/SettingsMenu";
+import { useSseContext } from "@/context/SseContext";
 
 export default function Dashboard() {
-	return (
-		<main className="min-h-screen p-4">
-			{/* Header */}
-			<SettingsMenu />
+  const { emergencies: data, isConnected, error } = useSseContext();
 
-			{/* Main Content */}
-			<div className="mt-12 px-4 flex flex-col items-center w-full">
-				<h1 className="text-3xl font-bold text-gray-900 mb-8">En proceso</h1>
+  console.log({ data, isConnected, error });
 
-				{/* Patient Information */}
-				{emergenciesList.map((emergency) => (
-					<EmergencyCard key={emergency.emergencyId} userName={emergency.userName} userPhone={emergency.userPhone} emergencyId={emergency.emergencyId} />
-				))}
-			</div>
-		</main>
-	);
+  if (data === null) {
+    return (
+      <main className="min-h-screen bg-white p-4">
+        {/* Header */}
+        <SettingsMenu />
+
+        {/* Main Content */}
+        <div className="mt-12 px-4 flex flex-col items-center w-full">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            En proceso
+          </h1>
+          <p className="text-gray-600">Cargando emergencias...</p>
+          {/* <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-customRed"></div> */}
+        </div>
+      </main>
+    );
+  }
+
+  if (data === undefined) {
+    return (
+      <main className="min-h-screen bg-white p-4">
+        {/* Header */}
+        <SettingsMenu />
+
+        {/* Main Content */}
+        <div className="mt-12 px-4 flex flex-col items-center w-full">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Emergencias a verificar
+          </h1>
+          <p className="text-gray-600">No hay emergencias activas.</p>
+          {/* <div className="animate-pulse rounded-full h-32 w-32 border-t-2 border-b-2 border-customRed"></div> */}
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="min-h-screen bg-white p-4">
+      {/* Header */}
+      <SettingsMenu />
+
+      {/* Main Content */}
+      <div className="mt-12 px-4 flex flex-col items-center w-full">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">En proceso</h1>
+
+        {/* Patient Information */}
+        {data.map((emergency) => (
+          <EmergencyCard
+            key={emergency.emergencyId}
+            userName={`${emergency.patient.firstName} ${emergency.patient.lastName}`}
+            userPhone={emergency.patient.phoneNumber}
+            emergencyId={emergency.emergencyId}
+            emergency={emergency}
+          />
+        ))}
+      </div>
+    </main>
+  );
 }
