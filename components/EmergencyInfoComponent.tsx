@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { EmergencyInfo } from "@/types";
 import { formatDate } from "@/utils/functions";

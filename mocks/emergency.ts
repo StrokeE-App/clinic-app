@@ -10,6 +10,7 @@ const emergency1: EmergencyInfo = {
 	userHeight: 170.5,
 	emergencyTime: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
 	emergencyLocation: {latitude: 3.467754, longitude: -76.483429},
+  emergencyMedications: ['Aspirina', 'Ibuprofeno', 'Paracetamol']
 };
 
 const emergency2: EmergencyInfo = {
@@ -22,6 +23,7 @@ const emergency2: EmergencyInfo = {
 	userHeight: 165.0,
 	emergencyTime: new Date(Date.now() - 15 * 60 * 1000), // 15 minutes ago
 	emergencyLocation: {latitude: 3.467754, longitude: -76.483429},
+  emergencyMedications: ['Aspirina', 'Ibuprofeno', 'Paracetamol']
 };
 
 const emergency3: EmergencyInfo = {
@@ -34,6 +36,7 @@ const emergency3: EmergencyInfo = {
 	userHeight: 178.0,
 	emergencyTime: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
 	emergencyLocation: {latitude:3.467754, longitude: -76.483429},
+  emergencyMedications: ['Aspirina', 'Ibuprofeno', 'Paracetamol']
 };
 
 const emergenciesList: EmergencyInfo[] = [emergency1, emergency2, emergency3];
