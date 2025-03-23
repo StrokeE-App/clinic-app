@@ -3,21 +3,38 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import ConfirmModal from "./ConfirmModal";
+import HourModal from "./HourModal";
+import apiClient from "@/api/apiClient";
+import toast from "react-hot-toast";
 
 export type ConfirmStrokeComponentProps = {
   emergencyId: string;
 };
 
-export default function ConfirmStrokeComponent({ emergencyId }: ConfirmStrokeComponentProps) {
+export default function ConfirmStrokeComponent({
+  emergencyId,
+}: ConfirmStrokeComponentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState(""); // Estado para el título dinámico
   const [actionType, setActionType] = useState(""); // Estado para el tipo de acción
 
-  const handleConfirm = () => {
-    if (actionType === "confirm") {
-      console.log(`Emergency ${emergencyId} confirmed`);
-    } else if (actionType === "discard") {
-      console.log(`Emergency ${emergencyId} discarded`);
+  const handleConfirm = async (date: Date | null) => {
+    // if (actionType === "confirm") {
+    //   console.log(`Emergency ${emergencyId} confirmed`);
+    // } else if (actionType === "discard") {
+    //   console.log(`Emergency ${emergencyId} discarded`);
+    // }
+    if (date) {
+      const loadingToast = toast.loading("Registrando datos...");
+      try {
+        await apiClient.post(`/healthCenter/deliver-patient`, {
+          emergencyId: emergencyId,
+          deliveredDate: date,
+        });
+        toast.success("Datos registrados correctamente", { id: loadingToast });
+      } catch {
+			toast.error('Se produjo un error al registrar los datos, por favor intente más tarde', {id: loadingToast});
+      }
     }
     setIsModalOpen(false);
   };
@@ -35,11 +52,17 @@ export default function ConfirmStrokeComponent({ emergencyId }: ConfirmStrokeCom
         color="red"
       /> */}
       <Button
-        title="Recibido"
-        onClick={() => openModal("Ya llego el paciente?", "confirm")}
+        title="Atendido"
+        onClick={() => openModal("¿El paciente ya fue atendido?", "confirm")}
         color="green"
       />
-      <ConfirmModal
+      {/* <ConfirmModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirm}
+        title={modalTitle} // Pasamos el título dinámico
+      /> */}
+      <HourModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleConfirm}
@@ -48,4 +71,3 @@ export default function ConfirmStrokeComponent({ emergencyId }: ConfirmStrokeCom
     </div>
   );
 }
-

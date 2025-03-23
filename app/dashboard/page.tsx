@@ -7,6 +7,7 @@ import { emergenciesList } from "@/mocks/emergency";
 import EmergencyCard from "@/components/EmergencyCard";
 import SettingsMenu from "@/components/SettingsMenu";
 import { useSseContext } from "@/context/SseContext";
+import { formatDate } from "@/utils/functions";
 
 export default function Dashboard() {
   const { emergencies: data, isConnected, error } = useSseContext();
@@ -59,15 +60,18 @@ export default function Dashboard() {
         <h1 className="text-3xl font-bold text-gray-900 mb-8">En proceso</h1>
 
         {/* Patient Information */}
-        {data.map((emergency) => (
+        {data.map((emergency) => {
+          let formatedTime = formatDate(emergency.startDate); 
+          return(
           <EmergencyCard
             key={emergency.emergencyId}
             userName={`${emergency.patient.firstName} ${emergency.patient.lastName}`}
-            userPhone={emergency.patient.phoneNumber}
+            emergencyTime={formatedTime}
             emergencyId={emergency.emergencyId}
             emergency={emergency}
           />
-        ))}
+        )
+        })}
       </div>
     </main>
   );
