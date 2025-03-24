@@ -1,15 +1,15 @@
-export type EmergencyInfo = {
-  emergencyId: string;
-  userName: string;
-  userPhone: string;
-  userAge: number;
-  userAddress: string;
-  userWeight: double;
-  userHeight: double;
-  emergencyTime: Date;
-  strokeLevel?: string;
-  emergencyLocation: {latitude: double; longitude: double};
-};
+// export type EmergencyInfo = {
+//   emergencyId: string;
+//   userName: string;
+//   userPhone: string;
+//   userAge: number;
+//   userAddress: string;
+//   userWeight: double;
+//   userHeight: double;
+//   emergencyTime: Date;
+//   strokeLevel?: string;
+//   emergencyLocation: {latitude: double; longitude: double};
+// };
 
 export type EmergencyPatient = {
 	firstName: string;
@@ -19,6 +19,7 @@ export type EmergencyPatient = {
 	weight: number;
 	height: number;
 	phoneNumber: string;
+  conditions?: string[];
 };
 
 export type EmergencyInfo = {
@@ -27,4 +28,9 @@ export type EmergencyInfo = {
 	startDate: Date;
 	nihScale?: number;
 	// emergencyLocation: {latitude: double; longitude: double};
+};
+
+export type UserUpdateData = {
+  firstName: string;
+  lastName: string;
 };
