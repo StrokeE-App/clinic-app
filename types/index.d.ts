@@ -29,3 +29,8 @@ export type EmergencyInfo = {
 	nihScale?: number;
 	// emergencyLocation: {latitude: double; longitude: double};
 };
+
+export type UserUpdateData = {
+  firstName: string;
+  lastName: string;
+};
