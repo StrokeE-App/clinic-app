@@ -37,7 +37,7 @@ export default function ConfirmStrokeComponent({
     setIsModalOpen(false);
   };
 
-  const openModal = (title: string, action: string) => {
+  const openModal = (title: string) => {
     setModalTitle(title); // Establece el título dinámico
     setIsModalOpen(true); // Abre el modal
   };
