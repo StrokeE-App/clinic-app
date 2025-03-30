@@ -76,7 +76,7 @@ export default function EditProfile() {
         {loading ? (
           <div className="w-6 h-6 border-2 border-customRed border-t-transparent rounded-full animate-spin" />
         ) : (
-          <EditProfileForm firstName={userData?.firstName} lastName={userData?.lastName} />
+          <EditProfileForm firstName={userData ? userData.firstName : ''} lastName={userData? userData.lastName : ''} />
         )}
       </div>
       </main>

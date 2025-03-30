@@ -50,7 +50,7 @@ export default function ConfirmStrokeComponent({
       /> */}
       <Button
         title="Atendido"
-        onClick={() => openModal("¿El paciente ya fue atendido?", "confirm")}
+        onClick={() => openModal("¿El paciente ya fue atendido?")}
         color="green"
       />
       {/* <ConfirmModal
