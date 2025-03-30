@@ -1,5 +1,4 @@
 import { EmergencyInfo } from '@/types';
-import { formatDate } from '@/utils/functions';
 import {useRouter} from 'next/navigation';
 
 interface EmergencyCardProps {

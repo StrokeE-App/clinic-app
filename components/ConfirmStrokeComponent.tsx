@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Button from "./Button";
-import ConfirmModal from "./ConfirmModal";
 import HourModal from "./HourModal";
 import apiClient from "@/api/apiClient";
 import toast from "react-hot-toast";
@@ -16,7 +15,6 @@ export default function ConfirmStrokeComponent({
 }: ConfirmStrokeComponentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState(""); // Estado para el título dinámico
-  const [actionType, setActionType] = useState(""); // Estado para el tipo de acción
 
   const handleConfirm = async (date: Date | null) => {
     // if (actionType === "confirm") {
@@ -41,7 +39,6 @@ export default function ConfirmStrokeComponent({
 
   const openModal = (title: string, action: string) => {
     setModalTitle(title); // Establece el título dinámico
-    setActionType(action); // Establece el tipo de acción
     setIsModalOpen(true); // Abre el modal
   };
   return (

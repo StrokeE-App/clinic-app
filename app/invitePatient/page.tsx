@@ -1,5 +1,4 @@
 import { InvitePatientForm } from "@/components/InvitePatientForm";
-import SettingsMenu from "@/components/SettingsMenu";
 import { StrokeeLogo } from "@/components/StrokeeLogo";
 import { ArrowBigLeft } from "lucide-react";
 import Link from "next/link";
