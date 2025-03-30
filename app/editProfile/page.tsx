@@ -17,7 +17,7 @@ export default function EditProfile() {
 
   useEffect(() => {
     if(!user)return;
-    const loadingToast = toast.loading('Cargando Ambulancias...');
+    const loadingToast = toast.loading('Cargando Usuario...');
     const fetchUser = async () => {
       try {
         setLoading(true);

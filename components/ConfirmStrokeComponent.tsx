@@ -25,9 +25,9 @@ export default function ConfirmStrokeComponent({
     if (date) {
       const loadingToast = toast.loading("Registrando datos...");
       try {
-        await apiClient.post(`/healthCenter/deliver-patient`, {
+        await apiClient.post(`/healthCenter/attended-patient`, {
           emergencyId: emergencyId,
-          deliveredDate: date,
+          attendedDate: date,
         });
         toast.success("Datos registrados correctamente", { id: loadingToast });
       } catch {
