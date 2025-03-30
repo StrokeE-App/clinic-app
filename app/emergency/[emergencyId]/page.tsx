@@ -4,14 +4,6 @@ import React, { useState, useEffect } from "react";
 import { EmergencyInfo } from "@/types";
 import { ArrowBigLeft } from "lucide-react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-const DynamicMap = dynamic(() => import("@/components/Map"), {
-  ssr: false,
-});
-
-// Mocks
-import { emergency1 } from "@/mocks/emergency";
 
 // Components
 import EmergencyInfoComponent from "@/components/EmergencyInfoComponent";

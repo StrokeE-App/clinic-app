@@ -8,10 +8,6 @@ type DatePickerProps = {
   selected: Date | null;
   // Callback when the date changes
   onChangeDate: (date: Date | null) => void;
-  // Optional flag to display a label
-  withLabel?: boolean;
-  // Optional label text
-  label?: string;
   // Optional required flag
   required?: boolean;
   // showTimeSelect?: boolean;
@@ -21,8 +17,6 @@ type DatePickerProps = {
 export default function DatePicker({
   selected,
   onChangeDate,
-  withLabel = false,
-  label = "",
   required = false,
   showTimeSelect = true,
 }: DatePickerProps) {

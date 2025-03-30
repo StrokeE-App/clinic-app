@@ -9,10 +9,6 @@ import toast from 'react-hot-toast';
 export default function EditProfileForm ({firstName, lastName}: UserUpdateData ){
 	const [userName, setUserName] = useState(firstName);
 	const [userLastName, setUserLastName] = useState(lastName);
-	const [userEmail, setUserEmail] = useState('');
-	const [password, setPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
   
     const {user} = useAuth();

@@ -1,8 +1,5 @@
 "use client";
 
-// Mocks
-import { emergenciesList } from "@/mocks/emergency";
-
 // Components
 import EmergencyCard from "@/components/EmergencyCard";
 import SettingsMenu from "@/components/SettingsMenu";
@@ -61,7 +58,7 @@ export default function Dashboard() {
 
         {/* Patient Information */}
         {data.map((emergency) => {
-          let formatedTime = formatDate(emergency.startDate); 
+          const formatedTime = formatDate(emergency.startDate); 
           return(
           <EmergencyCard
             key={emergency.emergencyId}
