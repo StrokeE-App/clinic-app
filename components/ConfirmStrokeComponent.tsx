@@ -5,6 +5,7 @@ import Button from "./Button";
 import HourModal from "./HourModal";
 import apiClient from "@/api/apiClient";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export type ConfirmStrokeComponentProps = {
   emergencyId: string;
@@ -13,15 +14,11 @@ export type ConfirmStrokeComponentProps = {
 export default function ConfirmStrokeComponent({
   emergencyId,
 }: ConfirmStrokeComponentProps) {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState(""); // Estado para el título dinámico
 
   const handleConfirm = async (date: Date | null) => {
-    // if (actionType === "confirm") {
-    //   console.log(`Emergency ${emergencyId} confirmed`);
-    // } else if (actionType === "discard") {
-    //   console.log(`Emergency ${emergencyId} discarded`);
-    // }
     if (date) {
       const loadingToast = toast.loading("Registrando datos...");
       try {
@@ -30,6 +27,8 @@ export default function ConfirmStrokeComponent({
           attendedDate: date,
         });
         toast.success("Datos registrados correctamente", { id: loadingToast });
+        setIsModalOpen(false);
+        router.push("/dashboard");
       } catch {
 			toast.error('Se produjo un error al registrar los datos, por favor intente más tarde', {id: loadingToast});
       }

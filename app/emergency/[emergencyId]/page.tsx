@@ -61,7 +61,7 @@ export default function EmergencyClientPage({
 
   return (
     <div>
-      <div className="text-customRed mt-4 ml-4">
+      <div className="text-customRed mt-10 ml-6">
         <Link href="/dashboard">
           <ArrowBigLeft size={48} />
         </Link>
