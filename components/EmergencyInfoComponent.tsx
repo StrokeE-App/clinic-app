@@ -51,10 +51,6 @@ export default function EmergencyInfoComponent({emergency}: EmergencyInfoProps) 
 						<p className="text-custom-black font-medium">{height} m</p>
 					</div>
 					<div>
-						<h2 className="text-custom-black text-sm font-bold">Nivel De Stroke</h2>
-						<p className="text-custom-black font-medium">{emergency.nihScale ? emergency.nihScale : '...'}</p>
-					</div>
-					<div>
 						<h2 className="text-custom-black text-sm font-bold whitespace-wrap">Tiempo desde que inició la emergencia</h2>
 						<p className="text-custom-black font-medium">{readableStartDate}</p>
 					</div>

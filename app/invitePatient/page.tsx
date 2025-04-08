@@ -8,7 +8,7 @@ export default function page() {
     <main className="min-h-screen bg-white p-4">
       {/* Header */}
       {/* <SettingsMenu /> */}
-      <div className="text-customRed mt-4 ml-4">
+      <div className="text-customRed mt-10 ml-6 absolute">
         <Link href="/dashboard">
           <ArrowBigLeft size={48} />
         </Link>
