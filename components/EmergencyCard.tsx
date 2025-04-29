@@ -16,7 +16,6 @@ export default function EmergencyCard({userName, emergencyTime, emergencyId, eme
 		router.push(`/emergency/${emergencyId}?data=${serialized}`);
 	};
 
-
 	return (
 		<>
 			<div onClick={handleClick} className="border-b border-red-200 py-4 w-full max-w-80 cursor-pointer">
