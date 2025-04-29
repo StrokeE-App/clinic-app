@@ -9,22 +9,6 @@ export async function middleware(request: NextRequest) {
 	}
 
 	try {
-		// Validate token with your backend
-		// const response = await fetch('YOUR_BACKEND_URL/auth/validate', {
-		//   method: 'POST',
-		//   headers: {
-		//     'Authorization': `Bearer ${token.value}`,
-		//     'Content-Type': 'application/json',
-		//   },
-		// });
-
-		// if (!response.ok) {
-		//   // Clear invalid token
-		//   const response = NextResponse.redirect(new URL('/login', request.url));
-		//   response.cookies.delete('authToken');
-		//   return response;
-		// }
-
 		// Token is valid, proceed with request
 		return NextResponse.next({
 			headers: {
@@ -39,5 +23,5 @@ export async function middleware(request: NextRequest) {
 
 // Add the paths that need authentication
 export const config = {
-	matcher: ['/dashboard/:path*', '/patients/:path*', '/test', '/emergency/:path*', '/editProfile'], // Add your protected routes here
+	matcher: ['/dashboard/:path*', '/patients/:path*', '/test', '/emergency/:path*', '/editProfile'], 
 };
