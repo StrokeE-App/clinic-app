@@ -1,13 +1,16 @@
 'use client';
 
-import {Settings, X} from 'lucide-react';
+import {Settings, X, Bell, BellOff} from 'lucide-react';
 import {useState, useEffect} from 'react';
 import {SignOut} from '@/firebase/config';
 import Link from 'next/link';
+import {useAuth} from '@/context/AuthContext';
+import {useNotifications} from '@/hooks/UseNotifications';
 
 export default function SettingsMenu() {
 	const [isOpen, setIsOpen] = useState(false);
-
+  const {user} = useAuth();
+  const {isSubscribed, error, subscribe, unsubscribe} = useNotifications('paramedic', user?.uid || '');
 	// Close panel when pressing Escape key
 	useEffect(() => {
 		const handleEscape = (event: KeyboardEvent) => {
@@ -22,11 +25,26 @@ export default function SettingsMenu() {
 
 	const handleLogOut = async () => {
 		try {
+      if (isSubscribed) {
+        await unsubscribe();
+      }
 			await SignOut();
 		} catch (error) {
 			console.error('Error logging out:', error);
 		}
 	};
+
+  const handleNotificationToggle = async () => {
+    try {
+      if (isSubscribed) {
+        await unsubscribe();
+      } else {
+        await subscribe();
+      }
+    } catch (error) {
+      console.error('Error toggling notifications:', error);
+    }
+  };
 
 	return (
 		<>
@@ -55,6 +73,25 @@ export default function SettingsMenu() {
 				</div>
         
         {/* Panel Body */}
+        {/* Panel Content */}
+				<div className="p-6">
+					{error && <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">{error}</div>}
+
+					<button onClick={handleNotificationToggle} className="flex items-center gap-2 text-gray-700 hover:text-customRed transition-colors mb-4">
+						{isSubscribed ? (
+							<>
+								<Bell className="w-5 h-5" />
+								<span>Desactivar notificaciones</span>
+							</>
+						) : (
+							<>
+								<BellOff className="w-5 h-5" />
+								<span>Activar notificaciones</span>
+							</>
+						)}
+					</button>
+				</div>
+
         <div className="p-6 flex flex-col gap-4">
           <Link href='/invitePatient' className="text-lg font-medium">Invitar paciente</Link>
           <Link href='/editProfile' className="text-lg font-medium">Editar perfil</Link>

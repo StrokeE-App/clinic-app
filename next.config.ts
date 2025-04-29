@@ -9,7 +9,21 @@ const nextConfig: NextConfig = {
         destination: '/login',
         permanent: true,
       },
-    ]
+    ];
+  },
+  // Add headers for service worker
+  async headers() {
+    return [
+      {
+        source: '/service-worker.js',
+        headers: [
+          {
+            key: 'Service-Worker-Allowed',
+            value: '/',
+          },
+        ],
+      },
+    ];
   },
 };
 
