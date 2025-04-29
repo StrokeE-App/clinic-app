@@ -55,13 +55,23 @@ export default function EmergencyInfoComponent({emergency}: EmergencyInfoProps) 
 						<p className="text-custom-black font-medium">{readableStartDate}</p>
 					</div>
 				</div>
-        <div className="flex justify-center">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-6">
           {emergency.patient.conditions && (
             <div className="flex flex-col items-center">
               <h2 className="text-custom-black text-sm font-bold">Condiciones</h2>
               <ul className="text-custom-black font-medium">
                 {emergency.patient.conditions.map((condition, index) => (
                   <li key={index}>{condition}</li>
+                ))}
+              </ul>
+              </div>
+            )}
+          {emergency.patient.medications && (
+            <div className="flex flex-col items-center">
+              <h2 className="text-custom-black text-sm font-bold">Medicamentos</h2>
+              <ul className="text-custom-black font-medium">
+                {emergency.patient.medications.map((medication, index) => (
+                  <li key={index}>{medication}</li>
                 ))}
               </ul>
               </div>

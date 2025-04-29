@@ -20,6 +20,7 @@ export type EmergencyPatient = {
 	height: number;
 	phoneNumber: string;
   conditions?: string[];
+  medications?: string[];
 };
 
 export type EmergencyInfo = {

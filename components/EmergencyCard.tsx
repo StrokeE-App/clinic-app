@@ -16,7 +16,7 @@ export default function EmergencyCard({userName, emergencyTime, emergencyId, eme
 		router.push(`/emergency/${emergencyId}?data=${serialized}`);
 	};
 
-  
+  console.log('Emergency', emergency)
 
 	return (
 		<>
