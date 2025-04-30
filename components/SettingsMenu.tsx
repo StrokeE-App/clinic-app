@@ -10,7 +10,7 @@ import {useNotifications} from '@/hooks/UseNotifications';
 export default function SettingsMenu() {
 	const [isOpen, setIsOpen] = useState(false);
   const {user} = useAuth();
-  const {isSubscribed, error, subscribe, unsubscribe} = useNotifications('paramedic', user?.uid || '');
+  const {isSubscribed, error, subscribe, unsubscribe} = useNotifications('clinic', user?.uid || '');
 	// Close panel when pressing Escape key
 	useEffect(() => {
 		const handleEscape = (event: KeyboardEvent) => {
