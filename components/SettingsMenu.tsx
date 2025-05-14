@@ -25,6 +25,7 @@ export default function SettingsMenu() {
 
 	const handleLogOut = async () => {
 		try {
+      console.log('is suscribed',isSubscribed)
       if (isSubscribed) {
         await unsubscribe();
       }
