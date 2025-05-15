@@ -15,13 +15,8 @@ const customJestConfig = {
 	testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
 	collectCoverageFrom: [
 		'components/**/*.{js,jsx,ts,tsx}',
-		'!components/EmergencyInfoComponent.{js,jsx,ts,tsx}',
-		'!components/ConfirmStrokeComponent.{js,jsx,ts,tsx}',
-		// 'context/**/*.{js,jsx,ts,tsx}',
 		'hooks/**/*.{js,jsx,ts,tsx}',
-		'!hooks/UseNotifications.{js,jsx,ts,tsx}',
 		'utils/**/*.{js,jsx,ts,tsx}',
-		'!utils/notifications.{js,jsx,ts,tsx}',
 		'!**/*.d.ts',
 		'!**/node_modules/**',
 	],
