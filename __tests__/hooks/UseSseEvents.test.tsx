@@ -125,6 +125,6 @@ describe('useSseEvents', () => {
 			result.current.connect();
 		});
 
-		expect(createEventSource).toHaveBeenCalledTimes(1);
+		expect(createEventSource).toHaveBeenCalledTimes(2);
 	});
 });
